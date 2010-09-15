@@ -24,10 +24,6 @@ module TwitterOAuth
     def search_users(q)
       search_get("/users/search.json?q=#{URI.escape(q)}")
     end
-    
-    def users_lookup(user_ids)
-      search_get("/1/users/lookup.json?user_id=#{user_ids.join(',')}")
-    end
      
     # Returns the top 30 trending topics for each day in a given week.
     def weekly_trends
