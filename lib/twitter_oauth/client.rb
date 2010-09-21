@@ -71,9 +71,9 @@ module TwitterOAuth
       
       def get(path, headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        Rails.logger.error { ">>> path: #{path}" }        
+        Rails.logger.error { ">>> get path: #{path}" }        
         oauth_response = access_token.get("/1#{path}", headers)
-        Rails.logger.error { ">>> oauth_response: #{oauth_response.inspect}" }        
+        Rails.logger.error { ">>> oauth_response.body: #{oauth_response.body.inspect}" }        
         JSON.parse(oauth_response.body)
       end
 
