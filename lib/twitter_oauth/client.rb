@@ -71,15 +71,15 @@ module TwitterOAuth
       
       def get(path, headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        Rails.logger.error { ">>> ToA Path: #{path}" }
         oauth_response = access_token.get("/1#{path}", headers)
-        Rails.logger.error { ">>> ToA response body: #{oauth_response.response}" }        
         JSON.parse(oauth_response.body)
       end
 
       def post(path, body='', headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
+        Rails.logger.info { ">>> Post path: #{path}" }        
         oauth_response = access_token.post("/1#{path}", body, headers)
+        Rails.logger.info { ">>> post response body: #{oauth_response.response}" }                
         JSON.parse(oauth_response.body)
       end
 
