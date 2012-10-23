@@ -6,4 +6,5 @@ require 'twitter_oauth/client'
 
 module TwitterOAuth
   VERSION = '0.4.3'
+  API_VERSION = '1.1'
 end

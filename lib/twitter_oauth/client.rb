@@ -68,22 +68,22 @@ module TwitterOAuth
       def access_token
         @access_token ||= OAuth::AccessToken.new(consumer, @token, @secret)
       end
-      
+
       def get(path, headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        oauth_response = access_token.get("/1#{path}", headers)
+        oauth_response = access_token.get("/#{API_VERSION}#{path}", headers)
         JSON.parse(oauth_response.body)
       end
 
       def post(path, body='', headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        oauth_response = access_token.post("/1#{path}", body, headers)
+        oauth_response = access_token.post("/#{API_VERSION}#{path}", body, headers)
         JSON.parse(oauth_response.body)
       end
 
       def delete(path, headers={})
         headers.merge!("User-Agent" => "twitter_oauth gem v#{TwitterOAuth::VERSION}")
-        oauth_response = access_token.delete("/1#{path}", headers)
+        oauth_response = access_token.delete("/#{API_VERSION}#{path}", headers)
         JSON.parse(oauth_response.body)
       end
   end
