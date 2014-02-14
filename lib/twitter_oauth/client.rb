@@ -61,7 +61,7 @@ module TwitterOAuth
         @consumer ||= OAuth::Consumer.new(
           @consumer_key,
           @consumer_secret,
-          { :site => 'http://api.twitter.com', :request_endpoint => @proxy }
+          { :site => 'https://api.twitter.com', :request_endpoint => @proxy }
         )
       end
 
